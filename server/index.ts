@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import {sequelize} from './database/config';
+import {sequelize} from './db/config';
 import dotenv from 'dotenv';
 import router from './routes';
 import errorHandler from './middleware/errorHandlingMiddleware';
