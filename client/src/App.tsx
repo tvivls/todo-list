@@ -1,9 +1,15 @@
 import React from 'react';
 import './App.css';
+import TodoList from './components/TodoList';
+import TodoContextProvider from './contexts/TodoContext';
+import InputTodo from './components/InputTodo';
 
 function App() {
   return (
-    <div></div>
+    <TodoContextProvider>
+      <InputTodo/>
+      <TodoList />
+    </TodoContextProvider>
   );
 }
 
