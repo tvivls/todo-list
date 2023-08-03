@@ -1,4 +1,4 @@
-import { Model, DataTypes, Optional } from 'sequelize';
+import { Model, DataTypes } from 'sequelize';
 import { sequelize } from './config';
 
 export interface TodoAttributes {
@@ -9,10 +9,6 @@ export interface TodoAttributes {
   updatedAt?: Date;
   deletedAt?: Date;
 }
-
-export interface TodoInput extends Optional<TodoAttributes, 'id'> {};
-export interface TodoOutput extends Required<TodoAttributes> {};
-
 
 class Todo extends Model<TodoAttributes> {
   id!: number;
