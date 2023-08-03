@@ -37,7 +37,6 @@ Todo.init(
     },
     status: {
       type: DataTypes.BOOLEAN,
-      defaultValue:false,
     },
   },
   {
