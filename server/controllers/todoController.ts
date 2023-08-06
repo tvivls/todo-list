@@ -2,13 +2,13 @@ import {NextFunction, Request, Response} from 'express';
 import {Todo} from '../db/models';
 import ApiError from '../error/apiError';
 
-class TodoController {
-  async getAll(req: Request, res: Response) {
+abstract class TodoController {
+  static async getAll(req: Request, res: Response) {
     const todos = await Todo.findAll();
     return res.json(todos);
   };
 
-  async create(req: Request, res: Response, next: NextFunction) {
+  static async create(req: Request, res: Response, next: NextFunction) {
     try {
       const { title } = req.body;
       const todo = await Todo.create({ title, status: false });
@@ -18,7 +18,7 @@ class TodoController {
     }
   };
 
-  async update(req: Request, res: Response, next: NextFunction) {
+  static async update(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params;
     const { title, status } = req.body;
     const [updatedTodoCount, [updatedTodo]] = await Todo.update(
@@ -31,7 +31,7 @@ class TodoController {
       next(ApiError.badRequest('Todo id not found'));
   };
 
-  async delete(req: Request, res: Response) {
+  static async delete(req: Request, res: Response) {
     const { id } = req.params;
     const deletedTodo = await Todo.destroy(
       { where: {id} });
@@ -39,4 +39,4 @@ class TodoController {
   };
 };
 
-export default new TodoController();
+export default TodoController;
