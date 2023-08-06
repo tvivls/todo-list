@@ -1,7 +1,7 @@
 import {ChangeEvent, createContext, FC, ReactNode, useState} from 'react';
 import {createTodos, deleteTodos, fetchTodos, updateTodos} from '../http/todoApi';
 import useSWR, {mutate} from 'swr';
-import {$host} from '../http';
+import {path} from '../http';
 import {TodoDataType} from '../types';
 
 export interface ITodoContext {
@@ -19,8 +19,6 @@ export interface ITodoContext {
 export const TodoContext = createContext<ITodoContext | null>(null);
 
 const TodoContextProvider: FC<{ children: ReactNode }> = ({children}) => {
-  const path = `${$host}todos/`;
-
   const { data, error, isLoading } = useSWR(path, fetchTodos);
 
   const [inputValue, setInputValue] = useState('');
