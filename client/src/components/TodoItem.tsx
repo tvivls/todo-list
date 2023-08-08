@@ -31,7 +31,7 @@ const TodoItem: FC<TodoDataType> = ({id, title, status}) => {
   };
 
   return (
-    <List.Item key={id}>
+    <List.Item>
       {!isInputOpen &&
         <>
           <Checkbox checked={status} onClick={() => handleCheckboxChange(id, status)}/>
