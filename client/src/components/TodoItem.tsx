@@ -63,7 +63,7 @@ const TodoItem: FC<TodoDataType> = ({id, title, status}) => {
       {isInputOpen && (
         <EditTodo
           open={isInputOpen}
-          onOk={handleInput}
+          onSuccess={handleInput}
           onCancel={handleCancel} title={title}/>
       )}
     </List.Item>

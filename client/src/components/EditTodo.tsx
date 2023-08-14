@@ -3,12 +3,12 @@ import {ChangeEvent, FC, useState} from 'react';
 
 interface IEditTodo {
   open: boolean;
-  onOk: (inputData: string) => void;
+  onSuccess: (inputData: string) => void;
   onCancel: () => void;
   title: string;
 }
 
-const EditTodo: FC<IEditTodo> = ({open, onOk, onCancel, title}) => {
+const EditTodo: FC<IEditTodo> = ({open, onSuccess, onCancel, title}) => {
   const [inputData, setInputData] = useState('');
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -16,7 +16,7 @@ const EditTodo: FC<IEditTodo> = ({open, onOk, onCancel, title}) => {
   };
 
   const handleSendDataToParent = () => {
-    onOk(inputData);
+    onSuccess(inputData);
   };
 
   return open ? (
